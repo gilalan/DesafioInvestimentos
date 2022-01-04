@@ -17,10 +17,16 @@ namespace DesafioInvestimentos.Repositories
             this.Collection = context.Context.GetCollection<Acao>("Acoes");
         }
 
-        //public IEnumerable<Acao> GetAll() 
-        //{
-        //    this.Collection.Database.GetCollection();
-        //}
+        public IEnumerable<Acao> GetAll()
+        {
+            var result = this.Collection.Find(FilterDefinition<Acao>.Empty);
+            if (result == null) 
+            {
+                return new List<Acao>();
+            }
+
+            return result.ToList();
+        }
 
         public void Save(Acao acao)
         {

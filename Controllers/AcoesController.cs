@@ -21,9 +21,9 @@ namespace DesafioInvestimentos.Controllers
         }
         // GET: api/<AcoesController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<Acao> Get()
         {
-            return new string[] { "value1", "value2" };
+            return _acaoRepositorio.GetAll();
         }
 
         // GET api/<AcoesController>/5

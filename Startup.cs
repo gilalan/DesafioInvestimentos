@@ -44,22 +44,6 @@ namespace DesafioInvestimentos
             });
             //services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();
-            //services.AddSwaggerGen(c =>
-            //{
-            //    c.SwaggerDoc("v1", new Info { Title = "Carteira de Investimentos - API", Version = "v1" });
-            //    c.ResolveConflictingActions(x => x.First());
-            //    c.AddSecurityDefinition("Bearer", new ApiKeyScheme
-            //    {
-            //        Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
-            //        Name = "Authorization",
-            //        In = "header",
-            //        Type = "apiKey"
-            //    });
-            //    c.AddSecurityRequirement(new Dictionary<string, IEnumerable<string>>
-            //    {
-            //        { "Bearer", Enumerable.Empty<string>() },
-            //    });
-            //});
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
