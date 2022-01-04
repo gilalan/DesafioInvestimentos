@@ -8,7 +8,7 @@ namespace DesafioInvestimentos.Models
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; set; }
+        public string Id { get; private set; }
         public string Codigo { get; set; }
 
         public string RazaoSocial { get; set; }

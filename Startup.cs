@@ -30,8 +30,10 @@ namespace DesafioInvestimentos
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            
             //services.AddSingleton<IAcaoRepositorio, AcaoRepositorio>();
             services.AddScoped<IAcaoRepositorio, AcaoRepositorio>();
+            services.AddScoped<IOperacaoRepositorio, OperacaoRepositorio>();
 
             //Parte do Mongodb
             services.AddScoped<IDbContext>(sp =>

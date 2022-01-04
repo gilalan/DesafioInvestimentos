@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using DesafioInvestimentos.Models;
 using DesafioInvestimentos.Repositories.interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -12,49 +10,37 @@ namespace DesafioInvestimentos.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AcoesController : ControllerBase
+    public class OperacoesController : ControllerBase
     {
-        private readonly IAcaoRepositorio _acaoRepositorio;
-        public AcoesController(IAcaoRepositorio acaoRepositorio)
+        private readonly IOperacaoRepositorio _operacaoRepositorio;
+
+        public OperacoesController(IOperacaoRepositorio operacaoRepositorio)
         {
-            _acaoRepositorio = acaoRepositorio;
+            _operacaoRepositorio = operacaoRepositorio;
         }
 
-        // GET: api/<AcoesController>
+        // GET: api/<OperacoesController>
         [HttpGet]
-        public IEnumerable<Acao> Get()
+        public IEnumerable<Operacao> Get()
         {
-            try
-            {
-                return _acaoRepositorio.GetAll();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            return _operacaoRepositorio.GetAll();
         }
 
-        // GET api/<AcoesController>/5
+        // GET api/<OperacoesController>/5
         [HttpGet("{id}")]
         public string Get(int id)
         {
-            try
-            {
-                return "value";
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            return "value";
         }
 
-        // POST api/<AcoesController>
+        // POST api/<OperacoesController>
         [HttpPost]
-        public IActionResult Post([FromBody] Acao acao)
+        public IActionResult Post([FromBody] Operacao operacao)
         {
             try
             {
-                _acaoRepositorio.Save(acao);
+                Operacao operacaoToSave = new Operacao(operacao.AcaoId, operacao.Tipo, operacao.Quantidade, operacao.ValorAcao);
+                _operacaoRepositorio.Save(operacaoToSave);
                 return Ok();
             }
             catch (Exception ex)
@@ -63,18 +49,18 @@ namespace DesafioInvestimentos.Controllers
             }
         }
 
-        // PUT api/<AcoesController>/5
+        // PUT api/<OperacoesController>/5
         [HttpPut("{id}")]
         private void Put(int id, [FromBody] string value)
         {
             throw new NotImplementedException();
         }
 
-        // DELETE api/<AcoesController>/5
+        // DELETE api/<OperacoesController>/5
         [HttpDelete("{id}")]
         private void Delete(int id)
         {
             throw new NotImplementedException();
-        }
+        }        
     }
 }
